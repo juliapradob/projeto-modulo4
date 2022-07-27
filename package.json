@@ -28,6 +28,7 @@
     "delayed-stream": "^1.0.0",
     "depd": "^2.0.0",
     "destroy": "^1.2.0",
+    "dotenv": "^16.0.1",
     "ee-first": "^1.1.1",
     "encodeurl": "^1.0.2",
     "escape-html": "^1.0.3",
@@ -86,6 +87,7 @@
     "side-channel": "^1.0.4",
     "simple-update-notifier": "^1.0.7",
     "sqlite": "^4.1.2",
+    "sqlite3": "^5.0.10",
     "statuses": "^2.0.1",
     "supports-color": "^5.5.0",
     "to-regex-range": "^5.0.1",
@@ -115,5 +117,6 @@
   "homepage": "https://github.com/juliapradob/projeto-modulo4#readme",
   "devDependencies": {
     "nodemon": "^2.0.19"
-  }
+  },
+  "type": "module"
 }

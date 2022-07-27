@@ -14,4 +14,5 @@ app.listen(port, () => {
 
 app.use(express.json());
 
+ClientesDAO.createTable();
 Clientes.rotas(app);

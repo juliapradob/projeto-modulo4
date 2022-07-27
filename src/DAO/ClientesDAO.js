@@ -21,7 +21,8 @@ class ClientesDAO {
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             nome VARCHAR,
             email VARCHAR,
-            telefone VARCHAR
+            telefone VARCHAR,
+            cpf VARCHAR
         )
         `
         return new Promise((resolve, reject)=>{
@@ -36,7 +37,7 @@ class ClientesDAO {
     };
 
     static inserirCliente(cliente){
-        const query = `INSERT INTO clientes (nome, email, telefone) VALUES (?,?,?)`
+        const query = `INSERT INTO clientes (nome, email, telefone, cpf) VALUES (?,?,?,?)`
 
         return new Promise((resolve, reject)=>{
             Database.run(query, ...Object.values(cliente), (e)=>{
@@ -78,15 +79,14 @@ class ClientesDAO {
     };
 
     static async atualizarClientePorId(body, id) {
-        const query = `UPDATE clientes SET (nome, email, telefone) = (?, ?, ?) WHERE id = ?`;
+        const query = `UPDATE clientes SET (nome, email, telefone, cpf) = (?, ?, ?, ?) WHERE id = ?`;
 
         return new Promise((resolve, reject) => {
             Database.run(query, [...Object.values(body), id], (e) => {
                 if(e) {
-                    console.log(e.message)
                     reject(e.message);
                 } else {
-                    resolve("Cliente atualizado com sucesso")
+                    resolve("Cliente atualizado com sucesso", {id, body})
                 }
             })
         })
@@ -96,11 +96,11 @@ class ClientesDAO {
         const query = `DELETE FROM clientes WHERE id = ?`;
 
         return new Promise((resolve, reject) => {
-            Database.get(query, id, (e) => {
+            Database.get(query, id, (e, result) => {
                 if(e) {
                     reject(e.message);
                 } else {
-                    resolve("Cliente deletado com sucesso")
+                    resolve(result)
                 }
             })
         })
