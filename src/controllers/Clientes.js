@@ -1,3 +1,10 @@
+import Database from "../infra/Database.js";
+import ClienteModel from "../models/ClienteModel.js";
+import ClientesDAO from "../DAO/ClientesDAO.js";
+import ValidacoesCliente from "../services/ValidacoesCliente.js";
+
+ClientesDAO.createTable();
+
 class Clientes {
     static rotas(app) { 
         app.get("/clientes", async (req, res) => {
