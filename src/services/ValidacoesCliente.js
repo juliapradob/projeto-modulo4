@@ -13,8 +13,12 @@ class ValidacoesCliente {
         return telefoneValidado == telefone
     };
 
-    static clienteIsValid(nome, email, telefone) {
-        return this.validaNome(nome) && this.validaTelefone(telefone) && this.validaEmail(email)
+    static validaCPF(cpf) {
+        return cpf.length == 11
+    };
+
+    static clienteIsValid(nome, email, telefone, cpf) {
+        return this.validaNome(nome) && this.validaTelefone(telefone) && this.validaEmail(email) && this.validaCPF(cpf)
     };
 }
 
