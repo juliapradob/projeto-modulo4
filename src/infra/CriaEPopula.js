@@ -1,16 +1,17 @@
 import ClientesDAO from "../DAO/ClientesDAO.js";
 
-const usuario = {
-    nome: "José das Couves",
-    email: "couve@mineira.com.br",
-    telefone: "31777777777"
+const cliente = {
+    nome: "Heloísa Maria Matos",
+    email: "heloisa@email.com",
+    telefone: "11993456832",
+    cpf: "42836438755"
 };
 
 try {
-    const tabela = await DatabaseUsuariosMetodos.createTable()
+    const tabela = await ClientesDAO.createTable()
     console.log(tabela);
 
-    const criada = await DatabaseUsuariosMetodos.inserirUsuario(usuario)
+    const criada = await ClientesDAO.inserirCliente(cliente)
     console.log(criada)
 } catch (e) {
     console.log(e)
