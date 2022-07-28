@@ -1,5 +1,6 @@
 import { Database } from "../infra/Database.js";
 import LivroModel from "../models/LivroModel.js";
+import LivrosDAO from "../DAO/LivrosDAO.js";
 import ValidacoesService from "../services/ValidacoesService.js";
 
 class Livros {
