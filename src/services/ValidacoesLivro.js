@@ -4,7 +4,7 @@ class ValidacoesLivro {
     };
 
     static validaAutor(autor) {
-        return autor > 2;
+        return autor.length > 2;
     }
 
     static validaGenero(genero) {

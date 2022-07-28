@@ -1,4 +1,4 @@
-import Database from "..infra/Database.js";
+import Database from "../infra/Database.js";
 
 class LivrosDAO {
     static activePragma(){

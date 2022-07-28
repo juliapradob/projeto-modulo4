@@ -1,5 +1,5 @@
 import Database from "../infra/Database.js";
-import LivroModel from "../models/LivroModel.js";
+import LivrosModel from "../models/LivrosModel.js";
 import LivrosDAO from "../DAO/LivrosDAO.js";
 import ValidacoesLivro from "../services/ValidacoesLivro.js";
 
@@ -31,10 +31,9 @@ class Livros {
 
         app.post("/livros", async (req, res) => {
             const livroValido = ValidacoesLivro.livroValido(...Object.values(req.body));
-
             try {
                 if(livroValido){
-                    const livro = new LivroModel(...Object.values(req.body));
+                    const livro = new LivrosModel(...Object.values(req.body));
                     const response = await LivrosDAO.inserirLivro(livro);
                     res.status(201).json(response);
                 } else {
@@ -50,7 +49,7 @@ class Livros {
 
             try {
                 if(livroValido) {
-                    const livro = new LivroModel(...Object.values(req.body));
+                    const livro = new LivrosModel(...Object.values(req.body));
                     const response = await LivrosDAO.atualizarLivroPorId(livro, req.params.id);
                     res.status(201).json(response);
                 }
@@ -62,7 +61,7 @@ class Livros {
         app.delete("/livros/:id", async (req, res)=>{
             try {
                 const livro = await LivrosDAO.deletarLivro(req.params.id);
-                if(!livro) {
+                if(!livro-1) {
                     throw new Error(`Livro de id ${req.params.id} não encontrado`);
                 }
                 res.status(200).json(livro);
