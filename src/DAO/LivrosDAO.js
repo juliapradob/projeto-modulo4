@@ -102,7 +102,7 @@ class LivrosDAO {
                 if(e) {
                     reject(e.message);
                 } else {
-                    resolve(result);
+                    resolve(`Livro de id ${id} deletado.`);
                 }
             })
         })

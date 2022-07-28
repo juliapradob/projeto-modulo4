@@ -1,4 +1,3 @@
-import Database from "../infra/Database.js";
 import LivrosModel from "../models/LivrosModel.js";
 import LivrosDAO from "../DAO/LivrosDAO.js";
 import ValidacoesLivro from "../services/ValidacoesLivro.js";
@@ -61,7 +60,7 @@ class Livros {
         app.delete("/livros/:id", async (req, res)=>{
             try {
                 const livro = await LivrosDAO.deletarLivro(req.params.id);
-                if(!livro-1) {
+                if(!livro) {
                     throw new Error(`Livro de id ${req.params.id} não encontrado`);
                 }
                 res.status(200).json(livro);
