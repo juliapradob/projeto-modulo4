@@ -80,7 +80,7 @@ class LivrosDAO {
         })
     };
 
-    static async atualizarClientePorId(body, id) {
+    static async atualizarLivroPorId(body, id) {
         const query = `UPDATE livros SET (titulo, autor, genero, valor) = (?, ?, ?, ?) WHERE id = ?`;
 
         return  new Promise((resolve, reject) => {
