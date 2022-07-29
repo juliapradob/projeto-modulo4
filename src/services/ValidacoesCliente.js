@@ -1,6 +1,6 @@
 class ValidacoesCliente {
     static validaNome(nome) {
-        return nome.length >= 2
+        return nome.length >= 3
     };
 
     static validaEmail(email) {
