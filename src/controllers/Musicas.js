@@ -1,4 +1,5 @@
-
+import MusicaModel from "../models/MusicaModel.js"
+import MusicasDAO from "../DAO/MusicasDAO.js"
 class Musicas {
     static rotas(app){
         app.get("/", (req,res)=>{
