@@ -16,13 +16,13 @@ class MusicasDAO {
         this.activePragma()
 
         const query = 
-        CREATE TABLE IF NOT EXISTS produtos_musicais(
+        `CREATE TABLE IF NOT EXISTS produtosMusicais(
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             tipo VARCHAR,
             gênero VARCHAR,
             artista VARCHAR,
             preço VARCHAR
-        )
+        )`
         
         return new Promise((resolve, reject)=>{
             Database.run(query, (e)=>{
@@ -35,7 +35,7 @@ class MusicasDAO {
         })
     };
     static inserirProdutoMusical(produto){
-        const query = INSERT INTO produtos_musicais (tipo, gênero, artista, preço) VALUES (?,?,?,?)
+        const query = `INSERT INTO produtosMusicais (tipo, gênero, artista, preço) VALUES (?,?,?,?)`
 
         return new Promise((resolve, reject)=>{
             Database.run(query, ...Object.values(produto), (e)=>{
@@ -49,7 +49,7 @@ class MusicasDAO {
     };
 
     static async listarTodosProdutosMusicais() {
-        const query = SELECT * FROM produtos_musicais;
+        const query = `SELECT * FROM produtosMusicais`;
 
         return new Promise((resolve, reject) => {
             Database.all(query, (e, result) => {
@@ -63,7 +63,7 @@ class MusicasDAO {
     };
 
     static async listarProdutoMusicalPorId(id) {
-        const query = SELECT * FROM produtos_musicais WHERE id = ?;
+        const query = `SELECT * FROM produtosMusicais WHERE id = ?`;
 
         return new Promise((resolve, reject) => {
             Database.get(query, id, (e, result) => {
@@ -76,7 +76,7 @@ class MusicasDAO {
         })
     };
     static async atualizarProdutoMusicalPorId(body, id) {
-        const query = UPDATE produtos_musicais SET (tipo, gênero, artista, preço) = (?, ?, ?, ?) WHERE id = ?;
+        const query = `UPDATE produtosMusicais SET (tipo, gênero, artista, preço) = (?, ?, ?, ?) WHERE id = ?`;
 
         return new Promise((resolve, reject) => {
             Database.run(query, [...Object.values(body), id], (e) => {
@@ -90,7 +90,7 @@ class MusicasDAO {
     };
 
     static async deletarProdutoMusicalPorId(id) {
-        const query = DELETE FROM produtos_musicais WHERE id = ?;
+        const query = `DELETE FROM produtosMusicais WHERE id = ?`;
 
         return new Promise((resolve, reject) => {
             Database.get(query, id, (e, result) => {
