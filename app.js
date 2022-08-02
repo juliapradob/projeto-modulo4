@@ -1,5 +1,6 @@
 import express from "express";
 import * as dotenv from "dotenv";
+import cors from "cors";
 import Clientes from "./src/controllers/Clientes.js";
 // import Musicas from "./src/controllers/Clientes.js";
 // import Livros from "./src/controllers/Livros.js";
