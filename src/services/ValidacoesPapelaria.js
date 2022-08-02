@@ -43,9 +43,7 @@ class ValidacoesPapelaria {
      * @returns boolean
      */
     static validaPrecoProduto(preco){
-        const tamanhoPreco = preco.length >= 1
-        const precoValidado = parseFloat(preco)
-        return (precoValidado == preco) && tamanhoPreco
+        return Number(preco) == preco && preco !== ""
     }
 
     /**
