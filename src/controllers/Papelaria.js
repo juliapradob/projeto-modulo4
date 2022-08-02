@@ -6,25 +6,25 @@ import ValidacoesPapelaria from "../services/ValidacoesPapelaria.js";
 class Papelaria {
     static rotas(app) { 
         
-        app.get('/produtos', async (req, res) => {
+        app.get('/papelaria', async (req, res) => {
             try {
                 const response = await PapelariaDAO.listarTodosOsProdutos()
                 res.status(200).json(response)
             } catch (error) {
                 res.status(400).json(error.message)
             }
-        })
+        });
 
-        app.get('/produtos/:codigo', async (req, res) => {
+        app.get('/papelaria/:codigo', async (req, res) => {
             try {
                 const response = await PapelariaDAO.listarProdutoPorCodigo(req.params.codigo)
                 res.status(200).json(response)
             } catch (error) {
                 res.status(404).json(error.message)
             }
-        })
+        });
 
-        app.post("/produtos", async (req, res) => {
+        app.post("/papelaria", async (req, res) => {
             const produtoIsValid = ValidacoesPapelaria.isValid(...Object.values(req.body))
             try {
                 if (produtoIsValid) {
@@ -35,11 +35,11 @@ class Papelaria {
                     throw new Error("Requisição inválida, revise os itens do produto!")
                 }
             } catch(error) {
-                res.status(400).json(error.message)
+                res.status(400).json({Error: "Verifique se o produto já está cadastrado"})
             }            
         });
 
-        app.put("/produtos/:codigo", async (req, res) => {
+        app.put("/papelaria/:codigo", async (req, res) => {
             const produtoIsValid = ValidacoesPapelaria.isValid(...Object.values(req.body))
             
             try {
@@ -53,7 +53,7 @@ class Papelaria {
             }  
         });
 
-        app.delete("/produtos/:codigo", async (req, res) => {
+        app.delete("/papeleria/:codigo", async (req, res) => {
             try {
                 const response = await PapelariaDAO.deletaProdutoPorCodigo(req.params.codigo)
                 res.status(200).json(response)
