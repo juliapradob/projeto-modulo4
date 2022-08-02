@@ -1,24 +1,13 @@
 import express from "express";
-import * as dotenv from "dotenv";
-import Clientes from "./src/controllers/Clientes.js"
-import Livros from "./src/controllers/Livros.js"
-import Papelaria from "./src/controllers/Papelaria.js"
-import Informatica from "./src/controllers/Informatica.js"
-import Musica from "./src/controllers/Musica.js"
+import CriarEntidade from "./src/DAO/criarEntidade.js";
+import InformaticaController from "./src/controller/informaticaController.js";
 
-dotenv.config()
+const app = express ();
+const porta = 3000
 
-const port = process.env.PORT || 3000 //acessa a variável de ambiente cujo nome é PORT
-const app = express()
-
-app.listen(port, () => {
-    console.log(`Servidor rodando em http://localhost:${port}`)
+app.listen (porta, ()=>{ console.log (`Servidor rodando no endereço http://localhost:${porta}`) 
 })
-
 app.use(express.json())
 
-Clientes.rotas(app)
-Livros.rotas(app)
-Papelaria.rotas(app)
-Informatica.rotas(app)
-Musica.rotas(app)
+CriarEntidade.criarTabelaInformatica ()
+InformaticaController.rotas (app)

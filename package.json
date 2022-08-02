@@ -1,29 +1,11 @@
 {
-  "name": "projeto-modulo4",
-  "version": "0.0.1",
-  "description": "",
-  "main": "app.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node app.js",
-    "dev": "nodemon app.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/juliapradob/projeto-modulo4.git"
-  },
-  "author": "",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/juliapradob/projeto-modulo4/issues"
-  },
-  "homepage": "https://github.com/juliapradob/projeto-modulo4#readme",
   "dependencies": {
-    "axios": "^0.27.2",
-    "express": "^4.18.1"
+    "express": "^4.18.1",
+    "patch": "^0.0.1",
+    "path": "^0.12.7",
+    "sqlite": "^4.1.2",
+    "sqlite3": "^5.0.11",
+    "url": "^0.11.0"
   },
-  "type": "module",
-  "devDependencies": {
-    "nodemon": "^2.0.19"
-  }
+  "type": "module"
 }
