@@ -19,6 +19,7 @@ class ClientesDAO extends DAO {
     static async inserirCliente(cliente){
         const query = `INSERT INTO clientes (nome, email, telefone, cpf) VALUES (?,?,?,?)`
         const response = await this.inserir(cliente, query)
+        return response
     };
 
     static async listarTodosClientes() {
