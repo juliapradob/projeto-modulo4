@@ -1,21 +1,8 @@
-import Database from "../infra/Database.js";
+import DAO from "./DAO.js"
 
-class ClientesDAO {
-    static activePragma(){
-        const pragma = "PRAGMA foreign_keys = ON"
+class ClientesDAO extends DAO {
 
-        Database.run(pragma, (e)=>{
-            if(e){
-                console.log(e)
-            } else {
-                console.log("Chaves estrangeiras estão ativas")
-            }
-        })
-    };
-
-    static createTable(){
-        this.activePragma()
-
+    static async createTableUsuarios() {
         const query = `
         CREATE TABLE IF NOT EXISTS clientes(
             id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -25,85 +12,37 @@ class ClientesDAO {
             cpf VARCHAR
         )
         `
-        return new Promise((resolve, reject)=>{
-            Database.run(query, (e)=>{
-                if(e){
-                    reject(e.message)
-                } else {
-                    resolve("Tabela CLIENTES criada com sucesso!")
-                }
-            })
-        })
+        const response = await this.createTable(query)
+        return response
     };
 
-    static inserirCliente(cliente){
+    static async inserirCliente(cliente){
         const query = `INSERT INTO clientes (nome, email, telefone, cpf) VALUES (?,?,?,?)`
-
-        return new Promise((resolve, reject)=>{
-            Database.run(query, ...Object.values(cliente), (e)=>{
-                if(e){
-                    reject(e.message)
-                } else {
-                    resolve({error: false, message: "Cliente cadastrado com sucesso!"})
-                }
-            })
-        })
+        const response = await this.inserir(cliente, query)
     };
 
     static async listarTodosClientes() {
         const query = `SELECT * FROM clientes`;
-
-        return new Promise((resolve, reject) => {
-            Database.all(query, (e, result) => {
-                if(e) {
-                    reject(e.message);
-                } else {
-                    resolve(result)
-                }
-            })
-        })
+        const response = await this.listarTodos(query)
+        return response
     };
 
     static async listarClientePorId(id) {
         const query = `SELECT * FROM clientes WHERE id = ?`;
-
-        return new Promise((resolve, reject) => {
-            Database.get(query, id, (e, result) => {
-                if(e) {
-                    reject(e.message);
-                } else {
-                    resolve(result)
-                }
-            })
-        })
+        const response = await this.listarPorId(id, query)
+        return response
     };
 
     static async atualizarClientePorId(body, id) {
         const query = `UPDATE clientes SET (nome, email, telefone, cpf) = (?, ?, ?, ?) WHERE id = ?`;
-
-        return new Promise((resolve, reject) => {
-            Database.run(query, [...Object.values(body), id], (e) => {
-                if(e) {
-                    reject(e.message);
-                } else {
-                    resolve({Error: false, message: `Cliente de id ${id} atualizado com sucesso`})
-                }
-            })
-        })
+        const response = this.atualizaPorId(id, query)
+        return response
     };
 
     static async deletarClientePorId(id) {
         const query = `DELETE FROM clientes WHERE id = ?`;
-
-        return new Promise((resolve, reject) => {
-            Database.get(query, id, (e, result) => {
-                if(e) {
-                    reject(e.message);
-                } else {
-                    resolve(result)
-                }
-            })
-        })
+        const response = this.deletaPorId(id, query)
+        return response
     };
 }
 
