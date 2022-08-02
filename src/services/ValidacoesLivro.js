@@ -1,6 +1,11 @@
 class ValidacoesLivro {
+    /**
+     * 
+     * @param {*} titulo 
+     * @returns 
+     */
     static validaTitulo(titulo) {
-        return titulo.length > 1;
+        return titulo.length > 1 && titulo.length < 5633;
     };
 
     static validaAutor(autor) {
