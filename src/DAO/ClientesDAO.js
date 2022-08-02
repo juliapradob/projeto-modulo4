@@ -86,7 +86,7 @@ class ClientesDAO {
                 if(e) {
                     reject(e.message);
                 } else {
-                    resolve("Cliente atualizado com sucesso", {id, body})
+                    resolve({Error: false, message: `Cliente de id ${id} atualizado com sucesso`})
                 }
             })
         })
