@@ -12,12 +12,14 @@ Desenvolver uma API REST com 5 entidades organizadas no padrão MVC que devem ef
 
 - [X] Javascript(ES6)
 - [X] Node.JS 16.x LTS
+- [X] npm
 - [X] Express
 - [X] Nodemon
 - [X] Dotenv
 - [X] SQLite3
 - [X] Path
 - [X] URL
+- [X] CORS
 - [X] Jest
 - [X] Insomnia/Postman 
 
@@ -175,7 +177,7 @@ operações com a entidade Livros.
  
  O método deve retornar todos os registros da entidade no formato JSON, como representado no modelo de cada entidade.
  
- Para filtrar os registros a partir de um ID específico, basta adicionar o "/id" ao final da URL.
+ Para filtrar os registros a partir de um ID específico, basta adicionar o "/(número do id)" ao final da URL.
  
  `http://localhost:3000/livros/1`
  
