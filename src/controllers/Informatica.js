@@ -1,20 +1,73 @@
 import InformaticaDAO from "../DAO/InformaticaDAO.js"
 import InformaticaModel from "../models/InformaticaModel.js"
+import ValidacoesInformatica from "../services/ValidacoesInformatica.js"
 
 class Informatica {
-    static rotas (app) {
+    static rotas(app) {         
         
-        app.post("/inserir", async (req, res)=> {
-            const produto = new InformaticaModel (...Object.values(req.body))
-            const resposta = await InformaticaDAO.inserirProduto(produto)
+        app.get("/informatica", async (req, res) => {
+            try {
+                const resposta = await InformaticaDAO.visualizarDatabaseCompleto();
+                if (resposta.length === 0) {
+                    throw new Error("o database está vazio")
+                }
+                res.status(200).json(resposta)
+            } catch (error) {
+                res.status(404).json(error.message)
+            }
+        });
 
-            res.status(200).send(resposta)
-        })
+        app.get("/informatica/:id", async (req, res) => {
+            try {
+                const produto = await InformaticaDAO.listarProdutoPorId(req.params.id)
+                if (!produto){
+                    throw new Error("produto não encontrado para esse id")
+                }
+                res.status(200).json(produto)
+            } catch (error) {
+                res.status(404).json(error.message)
+            }
+        });
 
-        app.get("/produtos", async (req, res)=>{
-            const resposta = await InformaticaDAO.visualizarDatabaseCompleto();
-            res.status(200).send(resposta)
-        })
+        app.post("/informatica", async (req, res) => {
+            const produtoIsValid=ValidacoesInformatica.validaProduto(...Object.values(req.body))
+            try {
+                if (produtoIsValid) {
+                    const produto = new InformaticaModel(...Object.values(req.body))
+                    const response = await InformaticaDAO.inserirProduto(produto)
+                    res.status(201).json(response)
+                } else {
+                    throw new Error("Requisição com problema, revise o corpo da mesma")
+                }
+            } catch (error) {
+                res.status(400).json(error.message)
+            }
+        });
+
+        app.put("/informatica/:id", async (req, res) => {
+            const produtoIsValid = ValidacoesInformatica.validaProduto(...Object.values(req.body))
+            try {
+                if (produtoIsValid) {
+                    const produto = new InformaticaModel(...Object.values(req.body))
+                    const response = await InformaticaDAO.atualizarProdutoPorId(produto, req.params.id)
+                    res.status(201).json(response)
+                }
+            } catch (error) {
+                res.status(400).json({error: "Produto não foi atualizado"})
+            }
+        });
+
+        app.delete("/informatica/:id", async (req, res) => {
+            try {
+                const produto = await InformaticaDAO.deletarProdutoPorId(req.params.id)
+                if(!produto) {
+                    throw new Error("Produto não encontrado para este id")
+                }
+                res.status(200).json(produto)
+            } catch (error) {
+                res.status(404).json(error.message)
+            }
+        });
     }
 }
 

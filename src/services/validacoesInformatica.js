@@ -52,6 +52,20 @@ class ValidacoesInformatica {
     static validaQtdEmEstoque(qtd) {
         return parseInt(qtd) == qtd;
     };
+
+    /**
+     * 
+     * @param {string} tipo 
+     * @param {string} nome 
+     * @param {string} marca 
+     * @param {string} modelo 
+     * @param {string} valor 
+     * @param {string} qtd 
+     * @returns boolean
+     */
+    static validaProduto(tipo, nome, marca, modelo, valor, qtd) {
+        return this.validaTipo(tipo) && this.validaNome(nome) && this.validaMarca(marca) && this.validaModelo(modelo) && this.validaValor(valor) && this.validaQtdEmEstoque(qtd)
+    };
 }
 
 export default ValidacoesInformatica
