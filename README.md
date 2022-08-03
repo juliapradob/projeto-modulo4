@@ -217,7 +217,7 @@ Os testes encontrados na pasta `test` podem ser executados no terminal com o seg
 ```
 npm run test
 ```
-Caso todos os testes sejam bem-sucedidos, a seguinte mensagem dve aparecer no terminal:
+Caso todos os testes sejam bem-sucedidos, a seguinte mensagem deve aparecer no terminal:
 
 ![image](https://user-images.githubusercontent.com/79461028/182672313-5f535afa-9f99-4276-9575-18c797ddec0e.png)
 
