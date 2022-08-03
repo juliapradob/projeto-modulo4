@@ -12,8 +12,7 @@ class DAO {
         });
     }
 
-    static createTable(query) {
-        
+    static async createTable(query) { 
         return new Promise((resolve, reject) => {
             Database.run(query, (e) => {
                 if(e) {
@@ -25,7 +24,7 @@ class DAO {
         })
     }
 
-    static inserir(entidade, query) {
+    static async inserir(entidade, query) {
         const body = Object.values(entidade)
 
         return new Promise((resolve, reject) => {
@@ -39,7 +38,7 @@ class DAO {
         })
     }
 
-    static listarTodos(query) {
+    static async listarTodos(query) {
         return new Promise((resolve, reject) => {
             Database.all(query, (e, result) => {
                 if (e) {
@@ -51,7 +50,7 @@ class DAO {
         })
     }
 
-    static listarPorId(id, query) {
+    static async listarPorId(id, query) {
         return new Promise((resolve, reject) => {
             Database.get(query, id, (e, result) => {
                 if (e) {
@@ -63,20 +62,20 @@ class DAO {
         })
     }
 
-    static atualizaPorId(entidade, id, query) {
+    static async atualizaPorId(entidade, id, query) {
         const body = Object.values(entidade)
         return new Promise((resolve, reject) => {
             Database.run(query,[...body, id], (e) => {
                 if (e) {
                     reject(e.message)
                 } else {
-                    resolve({Error: false, message: `Registro de id ${id} atualizado com sucesso`})
+                    resolve({Error: false, message: "Registro de id atualizado com sucesso"})
                 }
             })
         })
     }
 
-    static deletaPorId(query, id) {
+    static async deletaPorId(id, query) {
         return new Promise((resolve, reject) => {
             Database.run(query, id, (e) => {
                 if (e){
