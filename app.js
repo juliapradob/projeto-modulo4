@@ -9,7 +9,7 @@ import Musicas from "./src/controllers/Musicas.js"
 
 dotenv.config()
 
-const port = process.env.PORT || 3000
+const port = process.env.PORT || 3002
 const app = express()
 
 app.listen(port, () => {
