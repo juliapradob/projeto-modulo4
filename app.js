@@ -1,13 +1,25 @@
 import express from "express";
-import CriarEntidade from "./src/DAO/criarEntidade.js";
-import InformaticaController from "./src/controller/informaticaController.js";
+import * as dotenv from "dotenv";
+import cors from "cors";
+import Clientes from "./src/controllers/Clientes.js"
+import Livros from "./src/controllers/Livros.js"
+import Papelaria from "./src/controllers/Papelaria.js"
+import Informatica from "./src/controllers/Informatica.js"
+import Musica from "./src/controllers/Musica.js"
 
-const app = express ();
-const porta = 3000
+dotenv.config()
 
-app.listen (porta, ()=>{ console.log (`Servidor rodando no endereço http://localhost:${porta}`) 
+const port = process.env.PORT || 3000
+const app = express()
+
+app.listen(port, () => {
+    console.log(`Servidor rodando em http://localhost:${port}`)
 })
+
 app.use(express.json())
 
-CriarEntidade.criarTabelaInformatica ()
-InformaticaController.rotas (app)
+Clientes.rotas(app)
+Livros.rotas(app)
+Papelaria.rotas(app)
+Informatica.rotas(app)
+Musica.rotas(app)
