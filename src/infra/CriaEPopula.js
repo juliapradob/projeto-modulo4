@@ -33,6 +33,15 @@ const papelaria = {
     preco: "7.20"
 };
 
+const informatica = {
+    tipo_produto: "Celular",
+    nome_produto: "Moto G 60",
+    marca_produto: "Motorola",
+    modelo_produto: "602C",
+    valor_produto: "2000",
+    qtdeEmEstoque_produto: "7"
+};
+
 try {
     const tabelaClientes = await ClientesDAO.createTable()
     console.log(tabela);

@@ -2,12 +2,28 @@ class ValidacoesMusica {
     /**
      * 
      * @param {string} tipo 
-     * @param {string} gênero 
+     * @returns boolean
+     */
+    static validaTipo(tipo){
+        return tipo.length >= 2
+    };
+
+        /**
+     * 
+     * @param {string} genero 
+     * @returns boolean
+     */
+    static validaGenero(genero) {
+        return genero.length >= 3
+    };
+
+        /**
+     * 
      * @param {string} artista 
      * @returns boolean
      */
-    static validaDados (tipo, gênero, artista){
-        return tipo.length >=2 && gênero.length>=2 && artista.length>=2
+    static validaArtista(artista) {
+        return artista.length >= 2
     };
 
     /**
@@ -15,9 +31,9 @@ class ValidacoesMusica {
      * @param {string} preço 
      * @returns boolean
      */
-    static validaPreço (preço){
-        const preçoValidado=parseInt(preço)
-        return preçoValidado==preço
+    static validaPreço(preço) {
+        const preçoValidado = parseInt(preço)
+        return preçoValidado == preço
     };
 
     /**
@@ -28,8 +44,8 @@ class ValidacoesMusica {
      * @param {string} preço 
      * @returns boolean
      */
-    static validaProduto (tipo, gênero, artista, preço){
-        return this.validaDados(tipo, gênero, artista) && this.validaPreço (preço)
+    static validaProduto (tipo, genero, artista, preço){
+        return this.validaTipo(tipo) && this.validaGenero(genero) && this.validaArtista(artista) && this.validaPreço(preço)
     };
 }
 export default ValidacoesMusica

@@ -3,7 +3,7 @@ import MusicasDAO from "../DAO/MusicasDAO.js"
 import ValidacoesMusica from "../services/ValidacoesMusica.js"
 class Musicas {
     static rotas(app){
-        app.get("/musica", async (req,res) => {
+        app.get("/musica", async (req, res) => {
             try {
                 const produtos = await MusicasDAO.listarTodosProdutosMusicais()
                 if (produtos.length === 0) {

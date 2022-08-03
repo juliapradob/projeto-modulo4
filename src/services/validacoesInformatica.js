@@ -5,7 +5,7 @@ class ValidacoesInformatica {
      * @returns boolean
      */
     static validaTipo (tipo) {
-        return tipo.length > 3
+        return tipo.length >= 2
     };
 
         /**
@@ -23,7 +23,7 @@ class ValidacoesInformatica {
      * @returns boolean
      */
     static validaMarca(marca) {
-        return marca.length > 3
+        return marca.length >= 2
     };
 
     /**
@@ -32,7 +32,7 @@ class ValidacoesInformatica {
      * @returns boolean
      */
     static validaModelo(modelo) {
-        return modelo.length > 3
+        return modelo.length >= 3
     };
 
     /**

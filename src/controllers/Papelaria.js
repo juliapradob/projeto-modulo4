@@ -1,6 +1,5 @@
 import PapelariaModel from "../models/PapelariaModel.js";
 import PapelariaDAO from "../DAO/PapelariaDAO.js";
-import Database from "../infra/Database.js";
 import ValidacoesPapelaria from "../services/ValidacoesPapelaria.js";
 
 class Papelaria {

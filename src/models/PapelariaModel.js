@@ -1,4 +1,4 @@
-class PapelariaModel{
+class PapelariaModel {
     /**
      * 
      * @param {string} codigo 
@@ -13,7 +13,7 @@ class PapelariaModel{
         this.marca = marca
         this.descricao = descricao
         this.preco = preco
-    }
-}
+    };
+};
 
 export default PapelariaModel
