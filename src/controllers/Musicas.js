@@ -42,30 +42,30 @@ class Musicas {
             }
         });
 
-        app.put("/produto_musical/:id", async (req,res)=>{
-            const produtoIsValid=ValidacoesMusica.validaProduto(...Object.values(req.body))
+        app.put("/musica/:id", async (req , res) => {
+            const produtoIsValid = ValidacoesMusica.validaProduto(...Object.values(req.body))
             try {
-                if (produtoIsValid){
+                if (produtoIsValid) {
                     const produto = new MusicaModel(...Object.values(req.body))
                     const response = await MusicasDAO.atualizarProdutoMusicalPorId(produto, req.params.id)
                     res.status(201).json(response)
                 }
-               
             } catch (error) {
-                res.status(400).json({error: "cliente não foi atualizado"})
+                res.status(400).json({error: "Produto não foi atualizado"})
             }
-        })
-        app.delete("/produto_musical/:id", async (req,res)=>{
+        });
+
+        app.delete("/musica/:id", async (req, res) => {
             try {
-                const produto=await MusicasDAO.deletarProdutoMusicalPorId(req.params.id)
-                if(!produto){
-                    throw new Error("produto não encontrado para este id")
+                const produto = await MusicasDAO.deletarProdutoMusicalPorId(req.params.id)
+                if(!produto) {
+                    throw new Error("Produto não encontrado para este id")
                 }
                 res.status(200).json(produto)
             } catch (error) {
                 res.status(404).json(error.message)
             }
-        })
+        });
     }
 }
 export default Musicas
