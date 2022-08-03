@@ -1,9 +1,23 @@
-import Database from "../infra/Database.js"
+import DAO from "./DAO.js"
 
+class InformaticaDAO extends DAO {
+    static async criarTabelaInformatica() {
+        const query = `
+        CREATE TABLE IF NOT EXISTS informatica(
+            id_produto INTEGER PRIMARY KEY AUTOINCREMENT,
+            tipo_produto VARCHAR,
+            nome_produto VARCHAR,
+            marca_produto VARCHAR,
+            modelo_produto VARCHAR,
+            valor_produto VARCHAR,
+            qtdeEmEstoque_produto VARCHAR
+            ) `
+        const response = await this.createTable(query)
+        return response
+    };
 
-class InformaticaMetodos {
-    static inserirProduto (produto) {
-        const atividadeSQL = `INSERT INTO informatica
+    static async inserirProduto(produto) {
+        const query = `INSERT INTO informatica
         (tipo_produto,
         nome_produto,
         marca_produto,
@@ -11,32 +25,34 @@ class InformaticaMetodos {
         valor_produto,
         qtdeEmEstoque_produto)
         VALUES (?,?,?,?,?,?)`
+        const response = await this.inserir(produto, query)
+        return response
+    };
+        
+    static async visualizarDatabaseCompleto(){
+        const query = `SELECT * FROM informatica`
+        const response = await this.listarTodos(query)
+        return response
+    };
 
-        const body = Object.values(produto)
-        return new Promise ((resolve, reject)=>{
-            Database.run (atividadeSQL, ...body, (erro)=>{
-                if (erro) {
-                     reject ("Não foi possível cadastrar o produto")
-                    }
-                else {
-                    resolve("Produto cadastrado com sucesso!")
-                }
-            })
-        })
-        }   
-        
-    static visualizarDatabaseCompleto(){
-        const atividadeSQL = `SELECT * FROM informatica`
-        return new Promise ((resolve, reject)=>{
-            Database.all(atividadeSQL,(erro, resposta)=>{
-                if (erro) { reject (erro.message)
-                }
-                else{
-                    resolve (resposta)
-                }
-        })
-        
-    })
+    
+    static async listarProdutoPorId(id) {
+        const query = `SELECT * FROM informatica WHERE id_produto = ?`;
+        const response = await this.listarPorId(id, query)
+        return response
+    };
+
+    static async atualizarProdutoPorId(id, body) {
+        const query = `UPDATE informatica SET (tipo_produto, nome_produto, marca_produto, modelo_produto, valor_produto, qtdeEmEstoque_produto) = (?, ?, ?, ?, ?, ?) WHERE id_produto = ?`;
+        const response = this.atualizaPorId(body, id, query)
+        return response
+    };
+
+    static async deletarInformaticaPorId(id) {
+        const query = `DELETE FROM informatica WHERE id_produto = ?`;
+        const response = this.deletaPorId(id, query)
+        return response
+    };
 }
-}
-export default InformaticaMetodos
+
+export default InformaticaDAO
