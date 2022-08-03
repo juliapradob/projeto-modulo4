@@ -12,8 +12,7 @@ class DAO {
         });
     }
 
-    static createTable(query) {
-        
+    static createTable(query) { 
         return new Promise((resolve, reject) => {
             Database.run(query, (e) => {
                 if(e) {

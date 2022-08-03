@@ -1,21 +1,7 @@
-import Database from "../infra/Database.js";
-
-class PapelariaDAO {
-    static activePragma(){
-        const pragma = "PRAGMA foreign_keys = ON"
-
-        Database.run(pragma, (error)=>{
-            if(error){
-                console.log(error)
-            } else {
-                console.log("Chaves estrangeiras estão ativas")
-            }
-        })
-    };
-
-    static createTable(){
-        this.activePragma()
-
+import DAO from "./DAO.js"
+class PapelariaDAO extends DAO {
+    
+    static async createTablePapelaria(){
         const query = `
         CREATE TABLE IF NOT EXISTS papelaria(
             codigo INTEGER PRIMARY KEY,
@@ -25,84 +11,38 @@ class PapelariaDAO {
             preco VARCHAR
         )
         `
-        return new Promise((resolve, reject)=>{
-            Database.run(query, (error)=>{
-                if(error){
-                    reject(error.message)
-                } else {
-                    resolve("Tabela de papelaria criada com sucesso!")
-                }
-            })
-        })
+        const response = await this.createTable(query)
+        return response
     };
 
-    static inserirProduto(produto){
+    static async inserirProduto(produto){
         const query = `INSERT INTO papelaria (codigo, nome, marca, descricao, preco) VALUES (?,?,?,?,?)`
-
-        return new Promise((resolve, reject)=>{
-            Database.run(query, ...Object.values(produto), (error)=>{
-                if(error){
-                    reject(error.message)
-                } else {
-                    resolve({Sucesso: "Produto cadastrado com sucesso!"})
-                }
-            })
-        })
+        const response = await this.inserir(produto, query)
+        return response
     };
 
-    static listarTodosOsProdutos(){
+    static async listarTodosOsProdutos(){
         const query = `SELECT * FROM papelaria`
-        return new Promise((resolve, reject) => {
-            Database.all(query, (error, result) => {
-                if(error){
-                    reject(error.message)
-                } else {
-                    resolve(result)
-                }
-            })
-        })
+        const response = await this.listarTodos(query)
+        return response
     }
 
     static async listarProdutoPorCodigo(codigo) {
         const query = `SELECT * FROM papelaria WHERE codigo = ?`;
-
-        return new Promise((resolve, reject) => {
-            Database.get(query, codigo, (error, result) => {
-                if(error) {
-                    reject(error.message);
-                } else {
-                    resolve(result)
-                }
-            })
-        })
+        const response = await this.listarPorId(codigo, query)
+        return response
     };
 
-    static async atualizaProdutoPorCodigo(body, codigo) {
-        const query = `UPDATE papelaria SET (codigo, nome, marca, descricao, preco) = (?, ?, ?, ?,?) WHERE codigo = ?`;
-
-        return new Promise((resolve, reject) => {
-            Database.run(query, [...Object.values(body), codigo], (error) => {
-                if(error) {
-                    reject(error.message);
-                } else {
-                    resolve(`Produto de código ${codigo} atualizado com sucesso`, {codigo, body})
-                }
-            })
-        })
+    static async atualizaProdutoPorCodigo(codigo) {
+        const query = `UPDATE papelaria SET (nome, marca, descricao, preco) = (?, ?, ?, ?) WHERE codigo = ?`;
+        const response = await this.atualizaPorId(codigo, query)
+        return response
     };
 
     static async deletaProdutoPorCodigo(codigo) {
         const query = `DELETE FROM papelaria WHERE codigo = ?`;
-
-        return new Promise((resolve, reject) => {
-            Database.get(query, codigo, (error, result) => {
-                if(error) {
-                    reject(error.message);
-                } else {
-                    resolve({Sucesso: `Produto de codigo ${codigo} foi deletado com sucesso!`})
-                }
-            })
-        })
+        const response = await this.deletaPorId(codigo, query)
+        return response
     };
 }
 

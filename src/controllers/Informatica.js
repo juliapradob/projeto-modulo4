@@ -1,26 +1,21 @@
-import InformaticaMetodos from "../DAO/informaticaMetodos.js"
-import InformaticaModels from "../model/informaticaModels.js"
+import InformaticaDAO from "../DAO/InformaticaDAO.js"
+import InformaticaModel from "../models/InformaticaModel.js"
 
-class InformaticaController {
-    //Código para inserir produto no banco de dados
+class Informatica {
     static rotas (app) {
         
         app.post("/inserir", async (req, res)=> {
-
-            const produto = new InformaticaModels (...Object.values(req.body))
-            const resposta = await InformaticaMetodos.inserirProduto(produto)
+            const produto = new InformaticaModel (...Object.values(req.body))
+            const resposta = await InformaticaDAO.inserirProduto(produto)
 
             res.status(200).send(resposta)
         })
 
         app.get("/produtos", async (req, res)=>{
-
-            const resposta = await InformaticaMetodos.visualizarDatabaseCompleto ();
+            const resposta = await InformaticaDAO.visualizarDatabaseCompleto();
             res.status(200).send(resposta)
         })
-
     }
-
 }
 
-export default InformaticaController
+export default Informatica
