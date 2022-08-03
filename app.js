@@ -17,6 +17,7 @@ app.listen(port, () => {
 })
 
 app.use(express.json())
+app.use(cors())
 
 Clientes.rotas(app)
 Livros.rotas(app)

@@ -42,9 +42,9 @@ class InformaticaDAO extends DAO {
         return response
     };
 
-    static async atualizarProdutoPorId(id) {
+    static async atualizarProdutoPorId(id, body) {
         const query = `UPDATE informatica SET (nome, email, telefone, cpf) = (?, ?, ?, ?) WHERE id = ?`;
-        const response = this.atualizaPorId(id, query)
+        const response = this.atualizaPorId(body, id, query)
         return response
     };
 

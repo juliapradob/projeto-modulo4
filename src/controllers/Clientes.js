@@ -57,8 +57,10 @@ class Clientes {
             try {
                 if (clienteIsValid) {
                     const cliente = new ClienteModel(...Object.values(req.body))
-                    const response = await ClientesDAO.atualizarPorId(cliente, req.params.id)
+                    const response = await ClientesDAO.atualizarClientePorId(req.params.id, cliente)
                     res.status(201).json(response) 
+                } else {
+                    console.log("deu ruim")
                 }
             } catch (e) {
                 res.status(400).json({Error: "Cliente não foi atualizado"})
@@ -68,7 +70,7 @@ class Clientes {
         app.delete("/clientes/:id", async (req, res) => {
             try {
                 const cliente = await ClientesDAO.deletarClientePorId(req.params.id)
-                if (!cliente) { // refatorar isso
+                if (!cliente) { 
                     throw new Error("Cliente não encontrado para esse Id")
                 }
                 res.status(200).json(cliente)

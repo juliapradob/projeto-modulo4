@@ -32,9 +32,9 @@ class LivrosDAO extends DAO {
         return response
     };
 
-    static async atualizarLivroPorId(id) {
+    static async atualizarLivroPorId(id, body) {
         const query = `UPDATE livros SET (titulo, autor, genero, valor) = (?, ?, ?, ?) WHERE id = ?`;
-        const response = await this.atualizaPorId(id, query)
+        const response = await this.atualizaPorId(body, id, query)
         return response
     };
 

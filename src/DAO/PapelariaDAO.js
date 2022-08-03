@@ -33,9 +33,9 @@ class PapelariaDAO extends DAO {
         return response
     };
 
-    static async atualizaProdutoPorCodigo(codigo) {
+    static async atualizaProdutoPorCodigo(codigo, body) {
         const query = `UPDATE papelaria SET (nome, marca, descricao, preco) = (?, ?, ?, ?) WHERE codigo = ?`;
-        const response = await this.atualizaPorId(codigo, query)
+        const response = await this.atualizaPorId(body, codigo, query)
         return response
     };
 

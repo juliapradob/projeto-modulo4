@@ -34,9 +34,9 @@ class ClientesDAO extends DAO {
         return response
     };
 
-    static async atualizarClientePorId(id) {
+    static async atualizarClientePorId(id, body) {
         const query = `UPDATE clientes SET (nome, email, telefone, cpf) = (?, ?, ?, ?) WHERE id = ?`;
-        const response = this.atualizaPorId(id, query)
+        const response = this.atualizaPorId(body, id, query)
         return response
     };
 
