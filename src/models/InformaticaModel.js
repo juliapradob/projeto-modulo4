@@ -1,4 +1,4 @@
-class InformaticaModels{
+class InformaticaModel{
     constructor (id_produto, tipo_produto, nome_produto, marca_produto, modelo_produto, valor_produto, qtdeEmEstoque_produto) {
         
         this.id_produto = id_produto
@@ -7,9 +7,8 @@ class InformaticaModels{
         this.marca_produto = marca_produto
         this.modelo_produto = modelo_produto
         this.valor_produto = valor_produto
-        this. qtdeEmEstoque_produto = qtdeEmEstoque_produto
-     
+        this.qtdeEmEstoque_produto = qtdeEmEstoque_produto
     }
 }
 
-export default InformaticaModels
+export default InformaticaModel
