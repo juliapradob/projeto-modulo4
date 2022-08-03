@@ -12,12 +12,14 @@ Desenvolver uma API REST com 5 entidades organizadas no padrão MVC que devem ef
 
 - [X] Javascript(ES6)
 - [X] Node.JS 16.x LTS
+- [X] npm
 - [X] Express
 - [X] Nodemon
 - [X] Dotenv
 - [X] SQLite3
 - [X] Path
 - [X] URL
+- [X] CORS
 - [X] Jest
 - [X] Insomnia/Postman 
 
@@ -175,7 +177,7 @@ operações com a entidade Livros.
  
  O método deve retornar todos os registros da entidade no formato JSON, como representado no modelo de cada entidade.
  
- Para filtrar os registros a partir de um ID específico, basta adicionar o "/id" ao final da URL.
+ Para filtrar os registros a partir de um ID específico, basta adicionar o "/(número do id)" ao final da URL.
  
  `http://localhost:3000/livros/1`
  
@@ -215,7 +217,7 @@ Os testes encontrados na pasta `test` podem ser executados no terminal com o seg
 ```
 npm run test
 ```
-Caso todos os testes sejam bem-sucedidos, a seguinte mensagem dve aparecer no terminal:
+Caso todos os testes sejam bem-sucedidos, a seguinte mensagem deve aparecer no terminal:
 
 ![image](https://user-images.githubusercontent.com/79461028/182672313-5f535afa-9f99-4276-9575-18c797ddec0e.png)
 
