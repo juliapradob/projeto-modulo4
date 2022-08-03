@@ -10,7 +10,7 @@ class Livros {
                 if (!livros.length) {
                     throw new Error("Não há livros no database");
                 }
-                res.status(200).json({"total":`${livros.length} cadastrados`, "result": livros});
+                res.status(200).json({"result": livros});
             } catch (error) {
                 res.status(404).json(error.message);
             }
@@ -59,7 +59,7 @@ class Livros {
 
         app.delete("/livros/:id", async (req, res)=>{
             try {
-                const livro = await LivrosDAO.deletarLivro(req.params.id);
+                const livro = await LivrosDAO.deletarLivroPorId(req.params.id);
                 if(!livro) {
                     throw new Error(`Livro de id ${req.params.id} não encontrado`);
                 }
