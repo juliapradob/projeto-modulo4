@@ -1,7 +1,7 @@
 class PapelariaModel {
     /**
      * 
-     * @param {string} codigo 
+     * @param {number} codigo 
      * @param {string} nome 
      * @param {string} marca 
      * @param {string} descricao 

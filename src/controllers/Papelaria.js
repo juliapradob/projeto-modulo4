@@ -34,7 +34,7 @@ class Papelaria {
                     throw new Error("Requisição inválida, revise os itens do produto!")
                 }
             } catch(error) {
-                res.status(400).json({Error: "Verifique se o produto já está cadastrado"})
+                res.status(400).json({Error: "Verifique se o produto já está cadastrado", erro: error})
             }            
         });
 
@@ -44,7 +44,7 @@ class Papelaria {
             try {
                 if (produtoIsValid) {
                     const produto = new PapelariaModel(...Object.values(req.body))
-                    const response = await PapelariaDAO.atualizaProdutoPorCodigo(produto, req.params.codigo)
+                    const response = await PapelariaDAO.atualizaProdutoPorCodigo(req.params.codigo, produto)
                     res.status(200).json(response) 
                 }
             } catch (error) {

@@ -49,11 +49,11 @@ class Informatica {
             try {
                 if (produtoIsValid) {
                     const produto = new InformaticaModel(...Object.values(req.body))
-                    const response = await InformaticaDAO.atualizarProdutoPorId(produto, req.params.id)
+                    const response = await InformaticaDAO.atualizarProdutoPorId(req.params.id, produto)
                     res.status(201).json(response)
                 }
             } catch (error) {
-                res.status(400).json({error: "Produto não foi atualizado"})
+                res.status(400).json({error: "Produto não foi atualizado", erro: error})
             }
         });
 

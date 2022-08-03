@@ -69,7 +69,7 @@ class DAO {
                 if (e) {
                     reject(e.message)
                 } else {
-                    resolve({Error: false, message: "Registro de id atualizado com sucesso"})
+                    resolve({Error: false, message: `Registro de id ${id} atualizado com sucesso`})
                 }
             })
         })

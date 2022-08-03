@@ -34,7 +34,7 @@ class MusicasDAO extends DAO {
 
     static async atualizarProdutoMusicalPorId(id, body) {
         const query = `UPDATE produtosMusicais SET (tipo, gênero, artista, preço) = (?, ?, ?, ?) WHERE id = ?`;
-        const response = await this.atualizaPorId(body, id, query)
+        const response = this.atualizaPorId(body, id, query)
         return response
     };
 

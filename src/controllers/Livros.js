@@ -49,7 +49,7 @@ class Livros {
             try {
                 if(livroValido) {
                     const livro = new LivrosModel(...Object.values(req.body));
-                    const response = await LivrosDAO.atualizarLivroPorId(livro, req.params.id);
+                    const response = await LivrosDAO.atualizarLivroPorId(req.params.id, livro);
                     res.status(201).json(response);
                 }
             } catch (error) {
