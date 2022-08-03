@@ -46,7 +46,7 @@ class Papelaria {
                 if (produtoIsValid) {
                     const produto = new PapelariaModel(...Object.values(req.body))
                     const response = await PapelariaDAO.atualizaProdutoPorCodigo(produto, req.params.codigo)
-                    res.status(201).json(response) 
+                    res.status(200).json(response) 
                 }
             } catch (error) {
                 res.status(400).json(error.message)
