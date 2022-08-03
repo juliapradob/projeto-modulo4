@@ -27,7 +27,7 @@ class Clientes {
         app.get("/clientes/:id", async (req, res) => {
             try {
                 const cliente = await ClientesDAO.listarClientePorId(req.params.id)
-                if (!cliente) { // refatorar isso
+                if (!cliente) { 
                     throw new Error("Usuário não encontrado para esse Id")
                 }
                 res.status(200).json(cliente)

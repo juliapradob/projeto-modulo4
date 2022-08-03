@@ -37,19 +37,19 @@ class InformaticaDAO extends DAO {
 
     
     static async listarProdutoPorId(id) {
-        const query = `SELECT * FROM informatica WHERE id = ?`;
+        const query = `SELECT * FROM informatica WHERE id_produto = ?`;
         const response = await this.listarPorId(id, query)
         return response
     };
 
     static async atualizarProdutoPorId(id, body) {
-        const query = `UPDATE informatica SET (nome, email, telefone, cpf) = (?, ?, ?, ?) WHERE id = ?`;
+        const query = `UPDATE informatica SET (tipo_produto, nome_produto, marca_produto, modelo_produto, valor_produto, qtdeEmEstoque_produto) = (?, ?, ?, ?, ?, ?) WHERE id_produto = ?`;
         const response = this.atualizaPorId(body, id, query)
         return response
     };
 
     static async deletarInformaticaPorId(id) {
-        const query = `DELETE FROM informatica WHERE id = ?`;
+        const query = `DELETE FROM informatica WHERE id_produto = ?`;
         const response = this.deletaPorId(id, query)
         return response
     };

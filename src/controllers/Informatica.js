@@ -21,8 +21,8 @@ class Informatica {
             try {
                 const produto = await InformaticaDAO.listarProdutoPorId(req.params.id)
                 if (!produto){
-                    throw new Error("produto não encontrado para esse id")
-                }
+                    throw new Error("Produto não encontrado para esse id")
+                } 
                 res.status(200).json(produto)
             } catch (error) {
                 res.status(404).json(error.message)
@@ -30,7 +30,7 @@ class Informatica {
         });
 
         app.post("/informatica", async (req, res) => {
-            const produtoIsValid=ValidacoesInformatica.validaProduto(...Object.values(req.body))
+            const produtoIsValid = ValidacoesInformatica.validaProduto(...Object.values(req.body))
             try {
                 if (produtoIsValid) {
                     const produto = new InformaticaModel(...Object.values(req.body))
@@ -59,7 +59,7 @@ class Informatica {
 
         app.delete("/informatica/:id", async (req, res) => {
             try {
-                const produto = await InformaticaDAO.deletarProdutoPorId(req.params.id)
+                const produto = await InformaticaDAO.deletarInformaticaPorId(req.params.id)
                 if(!produto) {
                     throw new Error("Produto não encontrado para este id")
                 }

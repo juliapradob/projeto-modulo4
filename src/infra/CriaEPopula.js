@@ -44,10 +44,10 @@ const informatica = {
 
 try {
     const tabelaClientes = await ClientesDAO.createTableUsuarios()
-    console.log(tabela);
+    console.log(tabelaClientes);
 
     const criadaClientes = await ClientesDAO.inserirCliente(cliente)
-    console.log(criada)
+    console.log(criadaClientes)
 
     const tabelaLivros = await LivrosDAO.createTableLivros();
     console.log(tabelaLivros)
