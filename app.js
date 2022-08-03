@@ -1,5 +1,6 @@
 import express from "express";
 import * as dotenv from "dotenv";
+import cors from "cors";
 import Clientes from "./src/controllers/Clientes.js"
 import Livros from "./src/controllers/Livros.js"
 import Papelaria from "./src/controllers/Papelaria.js"
@@ -8,7 +9,7 @@ import Musica from "./src/controllers/Musica.js"
 
 dotenv.config()
 
-const port = process.env.PORT || 3000 //acessa a variável de ambiente cujo nome é PORT
+const port = process.env.PORT || 3000
 const app = express()
 
 app.listen(port, () => {
