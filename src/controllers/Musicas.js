@@ -47,7 +47,7 @@ class Musicas {
             try {
                 if (produtoIsValid) {
                     const produto = new MusicaModel(...Object.values(req.body))
-                    const response = await MusicasDAO.atualizarProdutoMusicalPorId(produto, req.params.id)
+                    const response = await MusicasDAO.atualizarProdutoMusicalPorId(req.params.id, produto)
                     res.status(201).json(response)
                 }
             } catch (error) {

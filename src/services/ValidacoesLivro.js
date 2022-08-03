@@ -28,7 +28,7 @@ class ValidacoesLivro {
 
     /**
      * Compara o valor númerico com o valor em string, para verificar se são iguais
-     * @param {string} valor 
+     * @param {string, number} valor 
      * @returns boolean
      */
     static validaValor(valor) {
@@ -40,7 +40,7 @@ class ValidacoesLivro {
      * @param {string} titulo 
      * @param {string} autor 
      * @param {string} genero 
-     * @param {string} valor 
+     * @param {string, number} valor 
      * @returns boolean
      */
     static livroValido(titulo, autor, genero, valor) {
