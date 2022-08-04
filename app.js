@@ -19,6 +19,8 @@ app.listen(port, () => {
 app.use(express.json())
 app.use(cors())
 
+console.log(process.env.HOSTNAME)
+
 Clientes.rotas(app)
 Livros.rotas(app)
 Papelaria.rotas(app)
