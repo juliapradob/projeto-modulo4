@@ -4,7 +4,7 @@ class ClienteModel {
         this.email = email
         this.telefone = telefone
         this.cpf = cpf
-    }
-}
+    };
+};
 
 export default ClienteModel

@@ -4,6 +4,6 @@ class MusicaModel{
         this.gênero=gênero
         this.artista=artista
         this.preço=preço
-    }
-}
+    };
+};
 export default MusicaModel

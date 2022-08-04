@@ -1,20 +1,7 @@
-import Database from "../infra/DataBase.js";
-class MusicasDAO {
-    static activePragma(){
-        const pragma = "PRAGMA foreign_keys = ON"
-
-        Database.run(pragma, (e)=>{
-            if(e){
-                console.log(e)
-            } else {
-                console.log("Chaves estrangeiras estão ativas")
-            }
-        })
-    };
-
-    static createTable(){
-        this.activePragma()
-
+import DAO from "./DAO.js";
+class MusicasDAO extends DAO {
+    
+    static async createTableMusicas(){
         const query = 
         `CREATE TABLE IF NOT EXISTS produtosMusicais(
             id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -23,84 +10,38 @@ class MusicasDAO {
             artista VARCHAR,
             preço VARCHAR
         )`
-        
-        return new Promise((resolve, reject)=>{
-            Database.run(query, (e)=>{
-                if(e){
-                    reject(e.message)
-                } else {
-                    resolve("Tabela Produtos Musicais criada com sucesso!")
-                }
-            })
-        })
+        const response = await this.createTable(query)
+        return response
     };
-    static inserirProdutoMusical(produto){
-        const query = `INSERT INTO produtosMusicais (tipo, gênero, artista, preço) VALUES (?,?,?,?)`
 
-        return new Promise((resolve, reject)=>{
-            Database.run(query, ...Object.values(produto), (e)=>{
-                if(e){
-                    reject(e.message)
-                } else {
-                    resolve({error: false, message: "Produto cadastrado com sucesso!"})
-                }
-            })
-        })
+    static async inserirProdutoMusical(produto){
+        const query = `INSERT INTO produtosMusicais (tipo, gênero, artista, preço) VALUES (?,?,?,?)`
+        const response = await this.inserir(produto, query)
+        return response
     };
 
     static async listarTodosProdutosMusicais() {
         const query = `SELECT * FROM produtosMusicais`;
-
-        return new Promise((resolve, reject) => {
-            Database.all(query, (e, result) => {
-                if(e) {
-                    reject(e.message);
-                } else {
-                    resolve(result)
-                }
-            })
-        })
+        const response = await this.listarTodos(query)
+        return response
     };
 
     static async listarProdutoMusicalPorId(id) {
         const query = `SELECT * FROM produtosMusicais WHERE id = ?`;
-
-        return new Promise((resolve, reject) => {
-            Database.get(query, id, (e, result) => {
-                if(e) {
-                    reject(e.message);
-                } else {
-                    resolve(result)
-                }
-            })
-        })
+        const response = await this.listarPorId(id, query)
+        return response
     };
-    static async atualizarProdutoMusicalPorId(body, id) {
-        const query = `UPDATE produtosMusicais SET (tipo, gênero, artista, preço) = (?, ?, ?, ?) WHERE id = ?`;
 
-        return new Promise((resolve, reject) => {
-            Database.run(query, [...Object.values(body), id], (e) => {
-                if(e) {
-                    reject(e.message);
-                } else {
-                    resolve("Produto atualizado com sucesso", {id, body})
-                }
-            })
-        })
+    static async atualizarProdutoMusicalPorId(id, body) {
+        const query = `UPDATE produtosMusicais SET (tipo, gênero, artista, preço) = (?, ?, ?, ?) WHERE id = ?`;
+        const response = this.atualizaPorId(body, id, query)
+        return response
     };
 
     static async deletarProdutoMusicalPorId(id) {
         const query = `DELETE FROM produtosMusicais WHERE id = ?`;
-
-        return new Promise((resolve, reject) => {
-            Database.get(query, id, (e, result) => {
-                if(e) {
-                    reject(e.message);
-                } else {
-                    resolve(result)
-                }
-            })
-        })
+        const response = await this.deletaPorId(id, query)
+        return response
     };
 }
 
