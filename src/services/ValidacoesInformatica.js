@@ -61,7 +61,6 @@ class ValidacoesInformatica {
      * @param {string} modelo 
      * @param {string} valor 
      * @param {string} qtd 
-
      * @returns boolean
      */
     static validaProduto(tipo, nome, marca, modelo, valor, qtd) {
