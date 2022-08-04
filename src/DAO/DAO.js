@@ -1,4 +1,4 @@
-import Database from "../infra/Database.js";
+import DataBase from "../infra/DataBase.js";
 
 class DAO {
     static async ativaChavesEstrangeiras() {
