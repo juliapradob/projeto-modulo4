@@ -1,7 +1,7 @@
-class PapelariaModel{
+class PapelariaModel {
     /**
      * 
-     * @param {string} codigo 
+     * @param {number} codigo 
      * @param {string} nome 
      * @param {string} marca 
      * @param {string} descricao 
@@ -13,7 +13,7 @@ class PapelariaModel{
         this.marca = marca
         this.descricao = descricao
         this.preco = preco
-    }
-}
+    };
+};
 
 export default PapelariaModel

@@ -14,7 +14,7 @@ class ValidacoesInformatica {
      * @returns boolean
      */
     static validaNome(nome) {
-        return nome.length > 3
+        return nome.length >= 3
     };
 
     /**
@@ -32,7 +32,7 @@ class ValidacoesInformatica {
      * @returns boolean
      */
     static validaModelo(modelo) {
-        return modelo.length >= 3
+        return modelo.length >= 2
     };
 
     /**
