@@ -32,7 +32,7 @@ class ValidacoesInformatica {
      * @returns boolean
      */
     static validaModelo(modelo) {
-        return modelo.length >= 3
+        return modelo.length >= 1
     };
 
     /**
