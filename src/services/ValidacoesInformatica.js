@@ -5,7 +5,6 @@ class ValidacoesInformatica {
      * @returns boolean
      */
     static validaTipo(tipo) {
-
         return tipo.length >= 2
     };
 
@@ -62,6 +61,7 @@ class ValidacoesInformatica {
      * @param {string} modelo 
      * @param {string} valor 
      * @param {string} qtd 
+
      * @returns boolean
      */
     static validaProduto(tipo, nome, marca, modelo, valor, qtd) {
