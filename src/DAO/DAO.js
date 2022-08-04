@@ -1,10 +1,11 @@
+import { Database } from "sqlite3";
 import DataBase from "../infra/DataBase.js";
 
 class DAO {
     static async ativaChavesEstrangeiras() {
         const query = 'PRAGMA foreign_keys = ON';
 
-        Database.run(query, error => {
+        DataBase.run(query, error => {
             if (error)
                 console.log(error.message);
             else
@@ -14,7 +15,7 @@ class DAO {
 
     static async createTable(query) { 
         return new Promise((resolve, reject) => {
-            Database.run(query, (e) => {
+            DataBase.run(query, (e) => {
                 if(e) {
                     reject(e.message)
                 } else {
@@ -28,7 +29,7 @@ class DAO {
         const body = Object.values(entidade)
 
         return new Promise((resolve, reject) => {
-            Database.run(query, [...body], (e) => {
+            DataBase.run(query, [...body], (e) => {
                 if (e) {
                     reject(e.message)
                 } else {
@@ -40,7 +41,7 @@ class DAO {
 
     static async listarTodos(query) {
         return new Promise((resolve, reject) => {
-            Database.all(query, (e, result) => {
+            DataBase.all(query, (e, result) => {
                 if (e) {
                     reject(e.message)
                 } else {
@@ -52,7 +53,7 @@ class DAO {
 
     static async listarPorId(id, query) {
         return new Promise((resolve, reject) => {
-            Database.get(query, id, (e, result) => {
+            DataBase.get(query, id, (e, result) => {
                 if (e) {
                     reject(e.message)
                 } else {
@@ -65,7 +66,7 @@ class DAO {
     static async atualizaPorId(entidade, id, query) {
         const body = Object.values(entidade)
         return new Promise((resolve, reject) => {
-            Database.run(query,[...body, id], (e) => {
+            DataBase.run(query,[...body, id], (e) => {
                 if (e) {
                     reject(e.message)
                 } else {
@@ -77,7 +78,7 @@ class DAO {
 
     static async deletaPorId(id, query) {
         return new Promise((resolve, reject) => {
-            Database.run(query, id, (e) => {
+            DataBase.run(query, id, (e) => {
                 if (e){
                     reject(e.message)
                 } else {
