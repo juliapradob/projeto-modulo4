@@ -49,6 +49,12 @@ try {
     const tabelaLivros = await LivrosDAO.createTableLivros();
     const criadaLivros = await LivrosDAO.inserirLivro(livro)
 
+    const tabelaMusicas = await MusicasDAO.createTableMusicas()    
+    const criadaMusicas = await MusicasDAO.inserirProdutoMusical(produto)
+
+    const tabelaPapelaria = await PapelariaDAO.createTablePapelaria()    
+    const criadaPapelaria = await PapelariaDAO.inserirProduto(papelaria)
+
     const tabelaMusicas = await MusicasDAO.createTableMusicas()
     const criadaMusicas = await MusicasDAO.inserirProdutoMusical(produto)
 
