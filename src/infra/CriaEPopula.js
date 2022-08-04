@@ -44,34 +44,19 @@ const informatica = {
 
 try {
     const tabelaClientes = await ClientesDAO.createTableUsuarios()
-    console.log(tabelaClientes);
-
     const criadaClientes = await ClientesDAO.inserirCliente(cliente)
-    console.log(criadaClientes)
 
     const tabelaLivros = await LivrosDAO.createTableLivros();
-    console.log(tabelaLivros)
-
     const criadaLivros = await LivrosDAO.inserirLivro(livro)
-    console.log(criadaLivros)
 
-    const tabelaMusicas = await MusicasDAO.createTableMusicas()
-    console.log(tabelaMusicas);
-    
+    const tabelaMusicas = await MusicasDAO.createTableMusicas()    
     const criadaMusicas = await MusicasDAO.inserirProdutoMusical(produto)
-    console.log(criadaMusicas)
 
-    const tabelaPapelaria = await PapelariaDAO.createTablePapelaria()
-    console.log(tabelaPapelaria);
-    
+    const tabelaPapelaria = await PapelariaDAO.createTablePapelaria()    
     const criadaPapelaria = await PapelariaDAO.inserirProduto(papelaria)
-    console.log(criadaPapelaria)
 
-    const tabelaInformatica = await InformaticaDAO.criarTabelaInformatica()
-    console.log(tabelaInformatica);
-    
+    const tabelaInformatica = await InformaticaDAO.criarTabelaInformatica()    
     const criadaInformatica = await InformaticaDAO.inserirProduto(informatica)
-    console.log(criadaInformatica)
 } catch (e) {
     console.log(e)
 }; 
