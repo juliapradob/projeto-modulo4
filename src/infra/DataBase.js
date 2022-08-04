@@ -4,6 +4,6 @@ import { fileURLToPath } from "url";
 
 sqlite3.verbose()
 const filePath = dirname(fileURLToPath(import.meta.url)) + "/database.db"
-const DataBase = new sqlite3.Database(filePath)
+const Database = new sqlite3.Database(filePath)
 
-export default DataBase
+export default Database

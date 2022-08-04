@@ -1,6 +1,6 @@
 import InformaticaDAO from "../DAO/InformaticaDAO.js"
 import InformaticaModel from "../models/InformaticaModel.js"
-import validacoesInformatica from "../services/validacoesInformatica.js"
+import ValidacoesInformatica from "../services/ValidacoesInformatica.js"
 
 class Informatica {
     static rotas(app) {         
@@ -30,7 +30,7 @@ class Informatica {
         });
 
         app.post("/informatica", async (req, res) => {
-            const produtoIsValid = validacoesInformatica.validaProduto(...Object.values(req.body))
+            const produtoIsValid = ValidacoesInformatica.validaProduto(...Object.values(req.body))
             try {
                 if (produtoIsValid) {
                     const produto = new InformaticaModel(...Object.values(req.body))
@@ -45,7 +45,7 @@ class Informatica {
         });
 
         app.put("/informatica/:id", async (req, res) => {
-            const produtoIsValid = validacoesInformatica.validaProduto(...Object.values(req.body))
+            const produtoIsValid = ValidacoesInformatica.validaProduto(...Object.values(req.body))
             try {
                 if (produtoIsValid) {
                     const produto = new InformaticaModel(...Object.values(req.body))
