@@ -4,7 +4,7 @@ class ValidacoesInformatica {
      * @param {string} tipo 
      * @returns boolean
      */
-    static validaTipo(tipo) {
+    static validaTipo (tipo) {
         return tipo.length >= 2
     };
 
@@ -32,7 +32,7 @@ class ValidacoesInformatica {
      * @returns boolean
      */
     static validaModelo(modelo) {
-        return modelo.length >= 1
+        return modelo.length >= 2
     };
 
     /**
