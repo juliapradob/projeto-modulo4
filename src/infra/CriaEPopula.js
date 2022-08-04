@@ -55,7 +55,13 @@ try {
     const tabelaPapelaria = await PapelariaDAO.createTablePapelaria()    
     const criadaPapelaria = await PapelariaDAO.inserirProduto(papelaria)
 
-    const tabelaInformatica = await InformaticaDAO.criarTabelaInformatica()    
+    const tabelaMusicas = await MusicasDAO.createTableMusicas()
+    const criadaMusicas = await MusicasDAO.inserirProdutoMusical(produto)
+
+    const tabelaPapelaria = await PapelariaDAO.createTablePapelaria()
+    const criadaPapelaria = await PapelariaDAO.inserirProduto(papelaria)
+
+    const tabelaInformatica = await InformaticaDAO.criarTabelaInformatica()
     const criadaInformatica = await InformaticaDAO.inserirProduto(informatica)
 } catch (e) {
     console.log(e)
