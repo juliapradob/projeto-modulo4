@@ -4,7 +4,6 @@ import ValidacoesInformatica from "../services/ValidacoesInformatica.js"
 
 class Informatica {
     static rotas(app) {         
-        
         app.get("/informatica", async (req, res) => {
             try {
                 const resposta = await InformaticaDAO.visualizarDatabaseCompleto();
