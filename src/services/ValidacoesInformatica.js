@@ -5,6 +5,7 @@ class ValidacoesInformatica {
      * @returns boolean
      */
     static validaTipo(tipo) {
+
         return tipo.length >= 2
     };
 
