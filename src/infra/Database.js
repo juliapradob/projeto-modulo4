@@ -7,3 +7,4 @@ const filePath = dirname(fileURLToPath(import.meta.url)) + "/database.db"
 const Database = new sqlite3.Database(filePath)
 
 export default Database
+

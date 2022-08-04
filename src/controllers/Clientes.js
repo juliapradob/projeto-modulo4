@@ -7,7 +7,7 @@ class Clientes {
     static rotas(app) { 
         app.get('/', (req, res)=>{
             res.send(`
-            <h2>API Livraria</h2>
+            <h2>API Livrasilia</h2>
             <p>Acesse o repositório <a href="https://github.com/juliapradob/projeto-modulo4">https://github.com/juliapradob/projeto-modulo4</a> para mais informações</p>
             `)
         });
