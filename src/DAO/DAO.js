@@ -1,4 +1,4 @@
-import { Database } from "sqlite3";
+import { DataBase } from "sqlite3";
 import DataBase from "../infra/DataBase.js";
 
 class DAO {
