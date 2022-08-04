@@ -36,16 +36,16 @@ test("Verifica se o nome da marca tem 2 caracteres ou mais", () => {
     expect(ValidacoesInformatica.validaMarca("C")).toBe(false)
 });
 
-test("Verifica se o modelo tem 3 caracteres ou mais", () => {
+test("Verifica se o modelo tem 1 caracteres ou mais", () => {
     expect(ValidacoesInformatica.validaModelo("602C")).toBe(true)
 });
 
-test("Verifica se o modelo tem 3 caracteres ou mais", () => {
+test("Verifica se o modelo tem 1 caracteres ou mais", () => {
     expect(ValidacoesInformatica.validaModelo("492L2")).toBe(true)
 });
 
-test("Verifica se o modelo tem 3 caracteres ou mais", () => {
-    expect(ValidacoesInformatica.validaModelo("CA")).toBe(false)
+test("Verifica se o modelo tem 1 caracteres ou mais", () => {
+    expect(ValidacoesInformatica.validaModelo("")).toBe(false)
 });
 
 test("Verifica se o preço é número", () => {
