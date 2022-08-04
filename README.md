@@ -1,8 +1,8 @@
-<h1 align="center"> API Livraria </h1>
+<h1 align="center"> API Livrasilia </h1>
 
 ## Sobre a API
 
-A API REST com tema Livraria foi desenvolvida com Javascript, Node.JS e o framework Express, como projeto final para o módulo IV de back-end do curso de Densenvolvimento Web Full Stack da Resilia.
+A API Livrasilia é uma API do tipo REST com tema Livraria que foi desenvolvida com Javascript, Node.JS e o framework Express, como projeto final para o módulo IV de back-end do curso de Densenvolvimento Web Full Stack da Resilia.
 
 ## Objetivo
 
@@ -42,7 +42,7 @@ npm install
 ```
 
 ## Dependências
-As depedências necessárias instaladas para este projeto foram a Express, Dotenv, SQLite3, Path, URL e CORS, que devem ser visualizadas no arquivo package.json.
+As dependências necessárias instaladas para este projeto foram a Express, Dotenv, SQLite3, Path, URL e CORS, que devem ser visualizadas no arquivo package.json.
  
  ```javascript
  "dependencies": {
@@ -221,7 +221,7 @@ Caso todos os testes sejam bem-sucedidos, a seguinte mensagem deve aparecer no t
 
 ![image](https://user-images.githubusercontent.com/79461028/182672313-5f535afa-9f99-4276-9575-18c797ddec0e.png)
 
-### Autores
+## Autores
 
 * **Camila Reis** - [cxavier6](https://github.com/cxavier6)
 * **Gabriella Rodrigues** - [Gabriella-Rodrigues](https://github.com/Gabriella-Rodrigues)
