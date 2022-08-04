@@ -1,22 +1,7 @@
-import Database from "../infra/Database.js";
+import DAO from "./DAO.js";
 
-class LivrosDAO {
-    static activePragma(){
-        const pragma = "PRAGMA foreign_keys = ON";
-
-        Database.run(pragma, (e)=>{
-            if(e){
-                console.log(e);
-            } else {
-                console.log("Chaves estrangeiras estão ativas");
-            }
-        })
-    };
-
-    static crateTable(){
-        this.activePragma();
-
-
+class LivrosDAO extends DAO {
+    static async createTableLivros() {
         const query = `
         CREATE TABLE IF NOT EXISTS livros(
             id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -25,87 +10,38 @@ class LivrosDAO {
             genero VARCHAR,
             valor INT
         )`;
+        const response = await this.createTable(query)
+        return response
+    };
 
-        return new Promise((resolve, reject)=>{
-            Database.run(query, (e)=>{
-                if(e){
-                    reject(e.message);
-                } else {
-                    resolve("Tabela 'livros' criada com sucesso!");
-                }
-            })
-        })
+    static async inserirLivro(livro){
+        const query = `INSERT INTO livros (titulo, autor, genero, valor) VALUES (?, ?, ?, ?)`
+        const response = await this.inserir(livro, query)
+        return response
     };
 
     static async listarTodosOsLivros() {
         const query = `SELECT * FROM livros`;
-
-
-        return new Promise((resolve,reject)=>{
-            Database.all(query, (e, result)=> {
-                if(e) {
-                    reject(e.message);
-                } else {
-                    resolve(result);
-                }
-            })
-        })
+        const response = await this.listarTodos(query)
+        return response
     };
 
     static async listarLivroPorId(id) {
         const query = `SELECT * FROM livros WHERE id = ?`
-
-        return new Promise((resolve, reject)=>{
-            Database.get(query, id, (e, result)=>{
-                if(e) {
-                    reject(e.message);
-                } else {
-                    resolve(result);
-                }
-            })
-        })
+        const response = await this.listarPorId(id, query)
+        return response
     };
 
-    static inserirLivro(livro){
-        const query = `INSERT INTO livros (titulo, autor, genero, valor) VALUES (?, ?, ?, ?)`
-
-        return new Promise((resolve, reject)=>{
-            Database.run(query, ...Object.values(livro), (e)=>{
-                if(e){
-                    reject(e.message);
-                } else {
-                    resolve({error: false, message: "O livro foi catalogado"});
-                }
-            })
-        })
-    };
-
-    static async atualizarLivroPorId(body, id) {
+    static async atualizarLivroPorId(id, body) {
         const query = `UPDATE livros SET (titulo, autor, genero, valor) = (?, ?, ?, ?) WHERE id = ?`;
-
-        return  new Promise((resolve, reject) => {
-            Database.run(query, [...Object.values(body), id], (e) => {
-                if(e){
-                    reject(e.message);
-                } else {
-                    resolve(`O livro de id ${id} foi atualizado!`, {id, body});
-                }
-            })
-        })
+        const response = this.atualizaPorId(body, id, query)
+        return response
     };
 
-    static async deletarLivro(id) {
+    static async deletarLivroPorId(id) {
         const query = `DELETE FROM livros WHERE id = ?`;
-
-        return new Promise((resolve, reject) => {
-            Database.get(query, id, (e, result) => {
-                if(e) {
-                    reject(e.message);
-                } else {
-                    resolve(`Livro de id ${id} deletado.`);
-                }
-            })
-        })
+        const response = await this.deletaPorId(id, query)
+        return response
     };
 }
 
