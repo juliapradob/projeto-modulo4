@@ -2,7 +2,7 @@
 
 ## Sobre a API
 
-A API Livrasilia é uma API do tipo REST com tema Livraria que foi desenvolvida com Javascript, Node.JS e o framework Express, como projeto final para o módulo IV de back-end do curso de Densenvolvimento Web Full Stack da Resilia.
+A API Livrasilia é uma API do tipo REST com tema Livraria que foi desenvolvida com Javascript, Node.JS e o framework Express, como projeto final para o módulo IV de back-end do curso de Densenvolvimento Web Full Stack da Resilia. Seu objetivo é o gerenciamento de estoque, base de clientes e atualização de preços.
 
 ## Objetivo
 
@@ -95,7 +95,6 @@ As dependências necessárias instaladas para este projeto foram a Express, Dote
  
  ```json
  {
-     "id": 1,
      "nome": "Heloísa Maria Matos",
      "email": "heloisa@email.com",
      "telefone": "11993456832",
@@ -110,7 +109,6 @@ As dependências necessárias instaladas para este projeto foram a Express, Dote
  
  ```json
  {
-    "id_produto": 1,
     "tipo_produto": "Celular",
     "nome_produto": "Moto G 60",
     "marca_produto": "Motorola",
@@ -127,7 +125,6 @@ As dependências necessárias instaladas para este projeto foram a Express, Dote
  
  ```json
  {
-     "id": 1,
      "titulo": "Memórias postumas de Brás Cubas",
      "autor": "Machado de Assis",
      "genero": "Romance",
@@ -141,7 +138,6 @@ As dependências necessárias instaladas para este projeto foram a Express, Dote
  
  ```json
  {
-     "id": 1,
      "tipo": "cd",
      "gênero": "funk",
      "artista": "Anitta",
